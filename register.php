@@ -27,8 +27,17 @@
         }else if(mysqli_num_rows($veriftn) > 0){
             $error = "<h2 style='color: red'>Apelido já registrado!</h2>";
         }else{
-            $query = mysqli_query($connect, "INSERT INTO users (`nome`, `email`, `apelido`, `senha`, `notify`, `active`) VALUES ('$nome','$email','$apelido','$pass','$notify','false')");
-            $error = "<h2 style='color: green'>Registrado com sucesso! Entre em seu email paara verificá-lo!</h2>";
+            $hash = md5($pass);
+
+            $query = mysqli_query($connect, "SELECT hash FROM users WHERE hash = '$hash'");
+
+            if(mysqli_num_rows($query) < 1){
+                mysqli_query($connect, "INSERT INTO users (`nome`, `email`, `apelido`, `senha`, `notify`, `active`, `hash`) VALUES ('$nome','$email','$apelido','$pass','$notify','false', '$hash')");
+                $error = "<h2 style='color: green'>Registrado com sucesso! Entre em seu email paara verificá-lo!</h2>";
+            }else{
+                return $hash;
+            }
+
         }
         
     }
@@ -38,6 +47,7 @@
     <head>
         <title>Register - Meu Site</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="icon" href="logo.jpg">
     </head>
     <body>
         <?php
@@ -76,6 +86,7 @@
                     </table>
                     <input type="submit" name="registrar" value="Registrar" class="submit">
                 </form>
+                <h3>Você já tem conta? Então <a href="login.php">Clique aqui</a></h3>
             </div>
         </section>
     </body>

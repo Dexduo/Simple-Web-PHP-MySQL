@@ -80,3 +80,7 @@ input.submit{
 .center{
     padding-top: 100px;
 }
+
+.center h1{
+    color: white;
+}
