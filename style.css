@@ -61,11 +61,22 @@ div.navbar img{
 }
 
 table{
-    float: center;
+    /* float: center; */
     border: 1px solid black;
     border-collapse: collapse;
+    min-width: 40%;
+    width: 40%;
+    margin-left: 30%;
 }
 
 th, td{
     border-collapse: collapse;
+}
+
+input.submit{
+    width: 40%;
+}
+
+.center{
+    padding-top: 100px;
 }
