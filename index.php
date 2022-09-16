@@ -11,7 +11,14 @@
     <body>
         <?php include("header.php");?>
         <section class="center">
-            <h2>Bem-vindo ao meu Site</h2>
+            <?php
+                $nome = $row['nome'];
+                if(isset($_COOKIE['login'])){
+                    echo '<h2>Bem-vindo '. $nome .'</h2>';
+                }else{
+                    echo '<h2>Bem-vindo ao site </h2>';
+                }
+            ?>
             <div class="panel">
                 <img src="hamster-meme.gif" alt="Meme do Hamster">
                 <a href="https://www.google.com">Click me</a>

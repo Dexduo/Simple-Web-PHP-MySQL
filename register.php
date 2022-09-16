@@ -1,6 +1,11 @@
 <?php
+    if(isset($_COOKIE['login'])){
+        header("Location: ./");
+    }
+
     include("db.php");
     $error = "";
+    
     if(isset($_POST['registrar'])){
         $nome = $_POST['nome'];
         $email = $_POST['email'];
