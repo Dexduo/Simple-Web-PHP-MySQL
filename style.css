@@ -79,8 +79,14 @@ input.submit{
 
 .center{
     padding-top: 100px;
+    border: 1px solid black;
 }
 
 .center h1{
     color: white;
+    font-size: 100px;
+}
+
+form.inputinfo{
+    width: 50%;
 }
